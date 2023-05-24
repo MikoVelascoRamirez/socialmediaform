@@ -25,6 +25,17 @@
                 </fieldset>
             </form>
         </section>
+        <section>
+            <h2>LOGIN</h2>
+            <form action="" method="post">
+            <small>Don't have an account yet? Sign up here</small>
+                <fieldset>
+                    <input type="text" name="login_username" placeholder="Username">
+                    <input type="password" name="login_password" placeholder="Password">
+                    <input type="submit" value="LOGIN" name="inp_login">
+                </fieldset>
+            </form>
+        </section>
     </main>
 </body>
 </html>
