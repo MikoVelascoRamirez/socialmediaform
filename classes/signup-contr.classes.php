@@ -38,6 +38,8 @@ class SignUpContr extends SignUp{
             header("Location: ../index.php?error=useroremailtaken");
             exit();
         }
+
+        $this->setUser($this->uid, $this->pass, $this->email);
     }
 
     private function emptyInput(){
