@@ -7,4 +7,12 @@ if(isset($_POST['inp_signup'])){
     $pass = $_POST['signup_password'];
     $pass_repeat = $_POST['signup_rep_password'];
     $email = $_POST['email'];
+
+    //Instancia de la clase SignupContr
+    include '../classes/dbh.classes.php';
+    include '../classes/signup.classes.php';
+    include '../classes/signup-contr.classes.php';
+
+
+    $signup = new SignUpContr($uid, $pass, $pass_repeat, $email);
 }
