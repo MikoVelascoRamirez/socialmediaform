@@ -1,9 +1,10 @@
 <?php
+    session_start();
 ?>
 
 <header>
     <nav>
-        <a href="">El blog del Maik</a>
+        <a>El blog del Maik</a>
         <ul>
             <li>Home</li>
             <li>About me</li>
@@ -11,8 +12,22 @@
             <li>Store</li>
         </ul>
         <section>
-            <a href="#"><button>SIGN UP</button></a>
-            <a href="#"><button>LOGIN</button></a>
+            <a>
+                <button>
+                    <?php
+                        if(!isset($_SESSION['username'])){ echo "SIGN UP"; } 
+                        else{ echo $_SESSION['username']; }                        
+                    ?>
+                </button>
+            </a>
+            <a href="./includes/destroySession.inc.php">
+                <button>
+                    <?php
+                        if(!isset($_SESSION['username'])){ echo "LOGIN"; } 
+                        else{ echo "LOGOUT"; }
+                    ?>
+                </button>
+            </a>
         </section>
     </nav>
 </header>
