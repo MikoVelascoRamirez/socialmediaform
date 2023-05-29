@@ -13,6 +13,9 @@ if(isset($_POST['inp_signup'])){
     include '../classes/signup.classes.php';
     include '../classes/signup-contr.classes.php';
 
-
     $signup = new SignUpContr($uid, $pass, $pass_repeat, $email);
+
+    // Ejecutar manejadores de errores y alta de usuario
+    $signup->signUpUser();
+
 }
