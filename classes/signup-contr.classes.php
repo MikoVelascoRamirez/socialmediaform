@@ -21,6 +21,14 @@ class SignUpContr extends SignUp{
             // echo "Empty Input!";
             header("Location: ../index.php?error=emptyinput");
             exit();
+        } else if(!$this->invalidUid()){
+            // echo "Invalid username!";
+            header("Location: ../index.php?error=username");
+            exit();
+        } else if(!$this->invalidEmail()){
+            // echo "Invalid email!";
+            header("Location: ../index.php?error=email");
+            exit();
         }
     }
 
@@ -32,6 +40,20 @@ class SignUpContr extends SignUp{
             if (empty($object_props[$key])){
                 return false;
             }
+        }
+        return true;
+    }
+
+    private function invalidUid(){
+        if(!preg_match("/^[a-zA-Z0-9]*$/", $this->uid)){
+            return false;
+        }
+        return true;
+    }
+
+    private function invalidEmail(){
+        if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+            return false;
         }
         return true;
     }
