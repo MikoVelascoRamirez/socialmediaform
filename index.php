@@ -1,7 +1,3 @@
-<?php
-    include './includes/header.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +7,11 @@
     <title>Login System</title>
 </head>
 <body>
+    <?php include './includes/header.php'; ?>
     <main>
         <section>
             <h2>SIGN UP</h2>
-            <form action="" method="post">
+            <form action="./includes/signup.inc.php" method="post">
                 <small>Don't have an account yet? Sign up here</small>
                 <fieldset>
                     <input type="text" name="username" placeholder="Username">
