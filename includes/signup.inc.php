@@ -18,4 +18,6 @@ if(isset($_POST['inp_signup'])){
     // Ejecutar manejadores de errores y alta de usuario
     $signup->signUpUser();
 
+    // Regresamos a la página principal
+    header("Location: ../index.php");
 }
