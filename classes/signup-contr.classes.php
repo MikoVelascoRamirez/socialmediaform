@@ -25,6 +25,14 @@ class SignUpContr extends SignUp{
             // echo "Invalid username!";
             header("Location: ../index.php?error=username");
             exit();
+        } else if(!$this->invalidEmail()){
+            // echo "Invalid email!";
+            header("Location: ../index.php?error=email");
+            exit();
+        } else if(!$this->pwdMatch()){
+            // echo "Passwords doesn't match";
+            header("Location: ../index.php?error=passwordmatch");
+            exit();
         }
     }
 
@@ -49,6 +57,13 @@ class SignUpContr extends SignUp{
 
     private function invalidEmail(){
         if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+            return false;
+        }
+        return true;
+    }
+
+    private function pwdMatch(){
+        if($this->pass !== $this->pass_repeat){
             return false;
         }
         return true;
