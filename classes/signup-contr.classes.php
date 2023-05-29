@@ -33,6 +33,10 @@ class SignUpContr extends SignUp{
             // echo "Passwords doesn't match";
             header("Location: ../index.php?error=passwordmatch");
             exit();
+        } else if(!$this->uidTakenCheck()){
+            // echo "Username or email taken";
+            header("Location: ../index.php?error=useroremailtaken");
+            exit();
         }
     }
 
@@ -68,4 +72,13 @@ class SignUpContr extends SignUp{
         }
         return true;
     }
+
+    private function uidTakenCheck(){
+        $rows = $this->checkUser($this->uid, $this->email);
+        if(!$rows){
+            return true;
+        }
+        return false;
+    }
+    
 }
