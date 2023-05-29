@@ -25,10 +25,6 @@ class SignUpContr extends SignUp{
             // echo "Invalid username!";
             header("Location: ../index.php?error=username");
             exit();
-        } else if(!$this->invalidEmail()){
-            // echo "Invalid email!";
-            header("Location: ../index.php?error=email");
-            exit();
         }
     }
 
