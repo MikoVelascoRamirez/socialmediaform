@@ -15,6 +15,10 @@ class LoginContr extends Login{
             echo "Empty Input!";
             header("Location: ../index.php?error=emptyinput");
             exit();
+        } else if(!$this->invalidUid()){
+            // echo "Invalid username!";
+            header("Location: ../index.php?error=username");
+            exit();
         }
     }
 
@@ -29,4 +33,12 @@ class LoginContr extends Login{
         }
         return true;
     }
+
+    private function invalidUid(){
+        if(!preg_match("/^[a-zA-Z0-9]*$/", $this->uid)){
+            return false;
+        }
+        return true;
+    }
+
 }
