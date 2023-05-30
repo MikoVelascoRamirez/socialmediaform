@@ -24,7 +24,7 @@
         </section>
         <section>
             <h2>LOGIN</h2>
-            <form action="" method="post">
+            <form action="./includes/login.inc.php" method="post">
             <small>Don't have an account yet? Sign up here</small>
                 <fieldset>
                     <input type="text" name="login_username" placeholder="Username">
