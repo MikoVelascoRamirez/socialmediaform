@@ -19,7 +19,10 @@ class LoginContr extends Login{
             // echo "Invalid username!";
             header("Location: ../index.php?error=username");
             exit();
-        }
+        } else if(!$this->loginCheck()){
+            header('Location: ../index.php?error=usernotfound');
+            exit();
+        } 
     }
 
     private function emptyInput(){
@@ -39,6 +42,10 @@ class LoginContr extends Login{
             return false;
         }
         return true;
+    }
+
+    private function loginCheck(){
+        return $this->checkUser($this->uid, $this->pass);
     }
 
 }
