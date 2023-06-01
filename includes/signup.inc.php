@@ -3,10 +3,10 @@
 if(isset($_POST['inp_signup'])){
 
     // Tomamos la data
-    $uid = $_POST['username'];
-    $pass = $_POST['signup_password'];
-    $pass_repeat = $_POST['signup_rep_password'];
-    $email = $_POST['email'];
+    $uid = htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');
+    $pass = htmlspecialchars($_POST['signup_password'], ENT_QUOTES, 'UTF-8');
+    $pass_repeat = htmlspecialchars($_POST['signup_rep_password'], ENT_QUOTES, 'UTF-8');
+    $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
 
     //Instancia de la clase SignupContr
     include '../classes/dbh.classes.php';
