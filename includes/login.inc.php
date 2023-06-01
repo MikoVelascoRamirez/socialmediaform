@@ -3,8 +3,8 @@
 if($_POST['inp_login']){
     
     // Tomando la data
-    $uid = $_POST['login_username'];
-    $pass = $_POST['login_password'];
+    $uid = htmlspecialchars($_POST['login_username'], ENT_QUOTES, 'UTF-8');
+    $pass = htmlspecialchars($_POST['login_password'], ENT_QUOTES, 'UTF-8');
 
     // Instancia de la clase LoginContr
     include '../classes/dbh.classes.php';
