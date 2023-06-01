@@ -21,6 +21,12 @@ if(isset($_POST['inp_signup'])){
     // Obtenemos el id del usuario registrado.
     $userId = $signup->fetchIdUser($uid);
 
+    // Inserción de nuevo registro
+    include '../UserProfile/classes/profileinfo.classes.php';
+    include '../UserProfile/classes/profileinfo-contr.classes.php';
+    $newProfile = new ProfileInfoContr($userId, $uid);
+    $newProfile->setDefaultProfileInfo();
+
     // Regresamos a la página principal
-    // header("Location: ../index.php");
+    header("Location: ../index.php");
 }
