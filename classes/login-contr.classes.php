@@ -12,17 +12,17 @@ class LoginContr extends Login{
 
     public function loginUser(){
         if(!$this->emptyInput()) {
-            echo "Empty Input!";
+            // echo "Empty Input!";
             header("Location: ../index.php?error=emptyinput");
             exit();
         } else if(!$this->invalidUid()){
             // echo "Invalid username!";
             header("Location: ../index.php?error=username");
             exit();
-        } else if(!$this->loginCheck()){
-            header('Location: ../index.php?error=usernotfound');
-            exit();
-        } 
+        }
+
+        return $this->loginCheck();
+        
     }
 
     private function emptyInput(){
