@@ -82,5 +82,9 @@ class SignUpContr extends SignUp{
         }
         return false;
     }
+
+    public function fetchIdUser($uid){
+        return $this->getIdUser($uid)[0]['users_id'];
+    }
     
 }

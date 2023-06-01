@@ -18,6 +18,9 @@ if(isset($_POST['inp_signup'])){
     // Ejecutar manejadores de errores y alta de usuario
     $signup->signUpUser();
 
+    // Obtenemos el id del usuario registrado.
+    $userId = $signup->fetchIdUser($uid);
+
     // Regresamos a la página principal
-    header("Location: ../index.php");
+    // header("Location: ../index.php");
 }

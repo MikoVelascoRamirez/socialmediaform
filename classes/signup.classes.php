@@ -27,4 +27,18 @@ class SignUp extends Dbh{
 
         $stmt = null;
     }
+
+    protected function getIdUser($uid){
+        $sql = "SELECT users_id FROM users WHERE users_uid = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $result = $stmt->execute([$uid]);
+
+        if(!$result){
+            $stmt = null;
+            header("Location: ../index.php?error=stmtfailed");
+            exit();
+        }
+
+        return $stmt->fetchAll();
+    }
 }
