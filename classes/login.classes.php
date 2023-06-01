@@ -2,7 +2,7 @@
 
 class Login extends Dbh{
     protected function checkUser($uid, $pwd){
-        $sql = "SELECT users_uid, users_pwd FROM users WHERE users_uid = ?;";
+        $sql = "SELECT * FROM users WHERE users_uid = ?;";
 
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$uid]);
@@ -21,7 +21,10 @@ class Login extends Dbh{
         // print_r($verifyPass);
         $stmt = null;
 
-        return $verifyPass;
+        return !$verifyPass ? false : [
+            "users_id" => $data[0]["users_id"],
+            "users_uid" => $data[0]["users_uid"]
+        ];
 
     }
 }
