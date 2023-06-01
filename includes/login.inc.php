@@ -13,9 +13,9 @@ if($_POST['inp_login']){
 
     // Ejecución de manejadores de errores y de inicio de sesión
     $loginContr = new LoginContr($uid, $pass);
-    $loginContr->loginUser();
+    $result = $loginContr->loginUser();
 
-    header("Location: ../includes/initSession.php?user={$uid}");
+    header("Location: ../includes/initSession.php?id={$result['users_id']}&user={$result['users_uid']}");
 }
 
 
