@@ -15,6 +15,11 @@ if($_POST['inp_login']){
     $loginContr = new LoginContr($uid, $pass);
     $result = $loginContr->loginUser();
 
+    if(!$result){
+        header('Location: ../index.php?error=usernotfound');
+        exit();
+    }
+
     header("Location: ../includes/initSession.php?id={$result['users_id']}&user={$result['users_uid']}");
 }
 
