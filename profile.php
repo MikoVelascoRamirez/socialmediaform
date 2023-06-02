@@ -19,21 +19,25 @@
 <body>
     <div id="container">
         <figure id="basic_info">
-            <h1 class="figure-title">LOREM IPSUM</h1>
+            <h1 class="figure-title">
+                <?php echo $_SESSION["username"] ?>
+            </h1>
             <a href="">
                 <button class="btn-settings">PROFILE SETTINGS</button>
             </a>
             <section class="profile-info">
                 <h3>ABOUT</h3>
-                <p class="profile-info-about">Tell people about yourself! Your interests, hobbies, or favorite TV show!</p>
+                <p class="profile-info-about">
+                    <?php echo $profileInfo->about; ?>
+                </p>
                 <h3>FOLLOWERS</h3>
                 <h3>FOLLOWING</h3>
             </section>
         </figure>
         <section class="welcome">
-            <h2>Hi! I am Lorem Ipsum</h2>
+            <h2><?php echo $profileInfo->introtitle; ?></h2>
             <p class="profile-welcome">
-                Welcome to my profile page! Soon I'll be able to tell you more about myself, and what you can find on my profile page.
+                <?php echo $profileInfo->introtext; ?>
             </p>
         </section>
         <section id="posts">
