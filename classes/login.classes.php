@@ -11,14 +11,12 @@ class Login extends Dbh{
 
         if(!$result){
             $stmt = null; //Closing connection
-            header('Location: ../index.php?error=usernotfound');
-            exit();
+            return false;
         }
 
         $data = $stmt->fetchAll();
         // print_r($data);
         $verifyPass = password_verify($pwd, $data[0]["users_pwd"]);
-        // print_r($verifyPass);
         $stmt = null;
 
         return !$verifyPass ? false : [
