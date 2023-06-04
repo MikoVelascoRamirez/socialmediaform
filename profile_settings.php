@@ -1,5 +1,4 @@
-<?php 
-    include './UserProfile/includes/getProfileData.inc.php';    
+<?php
 ?>
 
 <!DOCTYPE html>
@@ -17,12 +16,12 @@
                 <legend>Profile Settings</legend>
 
                 <small>Change your about section here!</small>
-                <textarea name="about" cols="30" rows="10" placeholder="Profile about section..."><?php echo $profileInfo->about; ?></textarea>
+                <textarea name="about" cols="30" rows="10" placeholder="Profile about section..."></textarea>
 
                 <small>Change your profile page page intro here!</small>
-                <input name="intro" type="text" placeholder="Profile title" value="<?php echo $profileInfo->introtitle; ?>">
+                <input name="intro" type="text" placeholder="Profile title"></input>
 
-                <textarea name="intro" placeholder="Profile introduction..." cols="30" rows="10"><?php echo $profileInfo->introtext; ?> </textarea>
+                <textarea name="intro" placeholder="Profile introduction..."></textarea>
 
                 <input type="submit" value="SAVE" name="inp_save_profile-settings">
             </fieldset>
