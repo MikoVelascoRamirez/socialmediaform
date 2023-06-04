@@ -16,7 +16,7 @@
             <h1 class="figure-title">
                 <?php echo $_SESSION["username"] ?>
             </h1>
-            <a href="">
+            <a href="./profile_settings.php">
                 <button class="btn-settings">PROFILE SETTINGS</button>
             </a>
             <section class="profile-info">
