@@ -14,4 +14,10 @@ if(isset($_POST['inp_save_profile-settings'])){
     $profileContr = new ProfileInfoContr($_SESSION['id'], $_SESSION['username']);
     $isUpdated = $profileContr->updateProfileInfo($infoAbout, $titleIntro, $textIntro);
 
+    if(!$isUpdated){
+        header("Location: ../../profile_settings.php?message=emptyfields");
+        exit();
+    } else{
+        header("Location: ../../profile.php");
+    }
 }
