@@ -23,4 +23,13 @@ class ProfileInfoContr extends ProfileInfo{
         $this->setNewProfile($profileAbout, $profileTitle, $profileText, $userId);
     }
 
+    private function emptyInput($about, $introtitle, $introtext){
+        $object_props = [$about, $introtitle, $introtext];
+        foreach($object_props as $value){
+            if (empty($value)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
