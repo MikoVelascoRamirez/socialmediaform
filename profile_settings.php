@@ -12,7 +12,7 @@
 </head>
 <body>
     <div id="profile-settings">
-        <form action="" method="post">
+        <form action="./UserProfile/includes/profile-settings.inc.php" method="post">
             <fieldset>
                 <legend>Profile Settings</legend>
 
@@ -20,9 +20,9 @@
                 <textarea name="about" cols="30" rows="10" placeholder="Profile about section..."><?php echo $profileInfo->about; ?></textarea>
 
                 <small>Change your profile page page intro here!</small>
-                <input name="intro" type="text" placeholder="Profile title" value="<?php echo $profileInfo->introtitle; ?>">
+                <input name="title_intro" type="text" placeholder="Profile title" value="<?php echo $profileInfo->introtitle; ?>">
 
-                <textarea name="intro" placeholder="Profile introduction..." cols="30" rows="10"><?php echo $profileInfo->introtext; ?> </textarea>
+                <textarea name="text_intro" placeholder="Profile introduction..." cols="30" rows="10"><?php echo $profileInfo->introtext; ?></textarea>
 
                 <input type="submit" value="SAVE" name="inp_save_profile-settings">
             </fieldset>
