@@ -32,4 +32,10 @@ class ProfileInfoContr extends ProfileInfo{
         }
         return false;
     }
+    
+    public function updateProfileInfo($about, $introtitle, $introtext){
+        if(!$this->emptyInput($about, $introtitle, $introtext)){
+            return $this->updateProfile($about, $introtitle, $introtext, $this->userId);
+        }
+    }
 }
