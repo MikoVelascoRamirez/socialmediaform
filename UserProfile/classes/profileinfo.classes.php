@@ -20,4 +20,12 @@ class ProfileInfo extends Dbh {
         $stmt = $this->connect()->prepare($sql);
         $result = $stmt->execute([$profileAbout, $profileTitle, $profileText, $profileId]);
     }
+
+    protected function updateProfile($profileAbout, $profileTitle, $profileText, $profileId){
+        $sql = "UPDATE profiles SET profiles_about = ?, profiles_introtitle = ?, profiles_introtext = ? WHERE users_id = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $result = $stmt->execute([$profileAbout, $profileTitle, $profileText, $profileId]);
+
+        return $result;
+    }
 }
