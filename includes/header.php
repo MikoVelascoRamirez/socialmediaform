@@ -1,9 +1,3 @@
-<?php
-    if(!isset($_SESSION)){
-        session_start();
-    }
-?>
-
 <header>
     <nav>
         <a>El blog del Maik</a>

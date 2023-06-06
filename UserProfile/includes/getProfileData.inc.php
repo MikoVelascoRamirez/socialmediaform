@@ -1,5 +1,9 @@
 <?php
 
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
     include './includes/header.php';
     include './classes/dbh.classes.php';
     include './UserProfile/classes/profileinfo.classes.php';
