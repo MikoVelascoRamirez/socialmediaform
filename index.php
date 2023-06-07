@@ -32,6 +32,7 @@
                     <input type="submit" value="LOGIN" name="inp_login">
                 </fieldset>
             </form>
+            <a href="./reset_password.php">Have you forgot your password?</a>
         </section>
     </main>
 </body>
