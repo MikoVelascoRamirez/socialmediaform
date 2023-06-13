@@ -30,4 +30,8 @@ class ChangePasswordContr extends ChangePassword{
         return true;
     }
 
+    public function verifyTokenValidator($tokenValidatorURL, $tokenValidatorDB){
+        return password_verify($tokenValidatorURL, $tokenValidatorDB);
+    }
+
 }
