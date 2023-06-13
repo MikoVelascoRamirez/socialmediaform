@@ -40,6 +40,21 @@ if (isset($_POST['reset_pass'])) {
         goto redirect;
     }
 
+    $password = $_POST['pass'];
+    $repeatPassword = $_POST['pass_repeat'];
+
+    // TODO: De lo contrario, verificar si los campos introducidos no estan vacíos y las contraseñas son iguales.
+
+    $emptyFields = $recov_request->emptynput($password, $repeatPassword);
+    $passwordsAreTheSame = $recov_request->checkPasswords($password, $repeatPassword);
+
+    if(!$emptyFields || !$passwordsAreTheSame){
+        // echo $queryString;
+        // echo $previousURL;
+        // print_r($params);
+        header("Location: ../../change_password.php?selector={$params['selector']}&validator={$params['validator']}&msg=incorrect");
+    }
+
     redirect:
     header("Location: ../../index.php?msg={$msg}");
     exit();
