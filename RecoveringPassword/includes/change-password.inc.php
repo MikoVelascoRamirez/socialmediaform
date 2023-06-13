@@ -55,6 +55,13 @@ if (isset($_POST['reset_pass'])) {
         header("Location: ../../change_password.php?selector={$params['selector']}&validator={$params['validator']}&msg=incorrect");
     }
 
+    // echo $params['validator'] . "<br>";
+    // echo $result['pwdresetvalidatortoken'] . "<br>";
+
+    // TODO: Verificar si los hashes por URL y el de la BD son iguales
+
+    $hashesAreEqual = $recov_request->verifyTokenValidator($params['validator'], $result['pwdresetvalidatortoken']);
+
     redirect:
     header("Location: ../../index.php?msg={$msg}");
     exit();
