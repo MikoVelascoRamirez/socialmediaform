@@ -29,4 +29,22 @@ class ChangePassword extends DBh{
 
         $stmt = null;
     }
+
+    protected function changePassword($newPassword, $mail){
+        $sql = "UPDATE users SET users_pwd = ? WHERE users_email = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $result = $stmt->execute([$newPassword, $mail]);
+
+
+        echo $result;
+
+
+        if(!$result){
+            $stmt = null;
+            return false;
+        }
+
+
+        return $result;
+    }
 }
