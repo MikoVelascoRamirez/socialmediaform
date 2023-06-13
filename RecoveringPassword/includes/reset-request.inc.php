@@ -29,5 +29,9 @@ if ($_POST['inp_rec_new_pass']) {
     if(!$requestInserted){
         header('Location: ../../reset_password.php?errormsg=somethingfailed');
     }
+
+    // echo $url;
     
+    // TODO: En caso de todo salir ok, redirigir al archivo de envío de correo.
+    header("Location: ./send-email.inc.php?mail={$email}&selector={$hashSelector}&validator={$hashValidator}");
 }
