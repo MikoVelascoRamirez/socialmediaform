@@ -18,4 +18,19 @@ if (isset($_POST['reset_pass'])) {
     include_once('../classes/change-password-contr.classes.php');
 
     $recov_request = new ChangePasswordContr();
+
+    // TODO: Seleccionar todo el registro si el token de selector existe en la bd
+    $result = $recov_request->getRecoveryRequest($tokenSelector);
+    $msg = "";
+    // $recov_request->getRecoveryRequest($tokenSelector);
+
+
+    if (!$result) {
+        $msg = "invalidtoken";
+        goto redirect;
+    }
+
+    redirect:
+        header("Location: ../../index.php?msg={$msg}");
+        exit();
 }
