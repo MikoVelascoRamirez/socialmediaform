@@ -23,4 +23,11 @@ class ChangePasswordContr extends ChangePassword{
         return true;
     }
 
+    public function checkPasswords($password, $repeatPassword){
+        if($password !== $repeatPassword){
+            return false;
+        }
+        return true;
+    }
+
 }
