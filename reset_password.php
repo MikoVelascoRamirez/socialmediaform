@@ -12,7 +12,7 @@
         <section>
             <h1>Reset your password</h1>
             <small>An e-mail will be send to you with instructions on how to reset your password.</small><br><br>
-            <form action="" method="post">
+            <form action="./RecoveringPassword/includes/reset-request.inc.php" method="post">
                 <input type="email" name="email" placeholder="Enter your e-mail address"><br><br>
                 <input type="submit" name="inp_rec_new_pass" value="Recieve new password by mail">
             </form>
