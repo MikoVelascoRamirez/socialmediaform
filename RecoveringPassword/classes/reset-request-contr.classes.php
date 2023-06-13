@@ -11,6 +11,10 @@ class ResetRequestContr extends ResetRequest {
         $this->resetExpireDate = date("U") + 900;
     }
 
+    public function checkEmail(){
+        return $this->emptyEmail() && $this->checkEmailExists();
+    }
+
     private function emptyEmail(){
         if(empty($this->resetEmail)) {
             return false;
