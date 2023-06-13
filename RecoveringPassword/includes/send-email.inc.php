@@ -16,7 +16,6 @@ $validator = $_GET['validator'];
 // echo $validator . "<br>";
 
 // TODO: Crear url de acceso a cambio de contraseña
-// $link = "http://localhost/backend/PHP_POO/Excercises/LoginSystem/change_password.php?selector={$selector}&validator={$validator}";
 $link = "https://socialmediaform-production.up.railway.app/change_password.php?selector={$selector}&validator={$validator}";
 
 try {
