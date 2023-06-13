@@ -11,4 +11,16 @@ class ChangePasswordContr extends ChangePassword{
         $this->deleteRequest($tkn_selector);
     }
 
+    public function emptynput($password, $repeatPassword){
+        $object_props = func_get_args();
+        // var_dump($object_props);
+        foreach($object_props as $key => $value){
+            // echo $object_props[$key] . $object_props[$value];
+            if (empty($object_props[$key])){
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
