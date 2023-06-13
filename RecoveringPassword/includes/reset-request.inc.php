@@ -22,4 +22,12 @@ if ($_POST['inp_rec_new_pass']) {
     // TODO: De lo contrario generar hashes de búsqueda y validación
     $hashSelector = bin2hex(random_bytes(10));
     $hashValidator = bin2hex(random_bytes(20));
+
+    // TODO: Insertar la petición de cambio de contraseña en la bd
+    $requestInserted = $resetRequest->addResetRequest($hashSelector, password_hash($hashValidator, PASSWORD_DEFAULT));
+
+    if(!$requestInserted){
+        header('Location: ../../reset_password.php?errormsg=somethingfailed');
+    }
+    
 }
