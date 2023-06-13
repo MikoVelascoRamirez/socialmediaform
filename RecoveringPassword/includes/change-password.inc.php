@@ -24,13 +24,23 @@ if (isset($_POST['reset_pass'])) {
     $msg = "";
     // $recov_request->getRecoveryRequest($tokenSelector);
 
-
     if (!$result) {
         $msg = "invalidtoken";
         goto redirect;
     }
 
+    // TODO: Si existe, evaluar si el tiempo de expiración obtenido es menor a la actual.
+    $expTime = $result['pwdresetexpires'];
+
+    // TODO: Si el tiempo registrado es menor al actual, eliminar registro y mandar mensaje de tiempo expirado.
+    if ($expTime < time()) {
+        echo "expredtime";
+        $msg = "expiredtime";
+        $recov_request->deleteFinishedRequest($tokenSelector);
+        goto redirect;
+    }
+
     redirect:
-        header("Location: ../../index.php?msg={$msg}");
-        exit();
+    header("Location: ../../index.php?msg={$msg}");
+    exit();
 }
