@@ -15,4 +15,18 @@ class ResetRequest extends Dbh {
         return $stmt->rowCount();
     }
 
+    public function insertRequest($resetEmail, $selector, $validator, $expires){
+        $sql = "INSERT INTO pwdresets(pwdresetemail, pwdresetselectortoken, pwdresetvalidatortoken, pwdresetexpires) VALUES (?, ?, ?, ?)";
+        $stmt = $this->connect()->prepare($sql);
+        $result = $stmt->execute([$resetEmail, $selector, $validator, $expires]);
+
+        if(!$result){
+            $stmt = null;
+            return false;
+        }
+
+        $stmt = null;
+        return true;
+    }
+
 }
