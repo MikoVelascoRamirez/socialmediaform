@@ -7,4 +7,8 @@ class ChangePasswordContr extends ChangePassword{
         // print_r($this->getRequest($tkn_selector));
     }
 
+    public function deleteFinishedRequest($tkn_selector){
+        $this->deleteRequest($tkn_selector);
+    }
+
 }
