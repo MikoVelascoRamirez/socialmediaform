@@ -14,4 +14,19 @@ class ChangePassword extends DBh{
 
         return $stmt->fetchAll();
     }
+
+    protected function deleteRequest($validator){
+        $sql = "DELETE FROM pwdresets WHERE pwdresetselectortoken = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $result = $stmt->execute([$validator]);
+
+
+        if(!$result){
+            $stmt = null;
+            return false;
+        }
+
+
+        $stmt = null;
+    }
 }
