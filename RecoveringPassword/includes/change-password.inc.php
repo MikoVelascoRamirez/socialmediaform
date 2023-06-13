@@ -48,7 +48,7 @@ if (isset($_POST['reset_pass'])) {
     $emptyFields = $recov_request->emptynput($password, $repeatPassword);
     $passwordsAreTheSame = $recov_request->checkPasswords($password, $repeatPassword);
 
-    if(!$emptyFields || !$passwordsAreTheSame){
+    if (!$emptyFields || !$passwordsAreTheSame) {
         // echo $queryString;
         // echo $previousURL;
         // print_r($params);
@@ -61,6 +61,12 @@ if (isset($_POST['reset_pass'])) {
     // TODO: Verificar si los hashes por URL y el de la BD son iguales
 
     $hashesAreEqual = $recov_request->verifyTokenValidator($params['validator'], $result['pwdresetvalidatortoken']);
+
+    // TODO: Caso negativo: redireccionar al formulario de cambio de contraseña.
+    if (!$hashesAreEqual) {
+        $msg = "somethingwaswrong";
+        goto redirect;
+    }
 
     redirect:
     header("Location: ../../index.php?msg={$msg}");
