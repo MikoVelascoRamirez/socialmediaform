@@ -7,9 +7,10 @@
     <title>Change your password</title>
 </head>
 <body>
-    <?php include './includes/header.php'; ?>
+    <?php include './includes/header.php'; ?><br>
     <main>
-        <br><form action="" method="post">
+        <form action="./RecoveringPassword/includes/change-password.inc.php" method="post">
+            <input type="hidden" name="token_selector" value="<?php echo $_GET['selector'] ?>">
             <input type="password" name="pass" placeholder="Enter new password"><br><br>
             <input type="password" name="pass_repeat" placeholder="Repeat new password"><br><br>
             <input type="submit" value="Reset password" name="reset_pass">
