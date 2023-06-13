@@ -26,7 +26,7 @@ if (isset($_POST['reset_pass'])) {
 
     if (!$result) {
         $msg = "invalidtoken";
-        goto redirect;
+        // goto redirect;
     }
 
     // TODO: Si existe, evaluar si el tiempo de expiración obtenido es menor a la actual.
@@ -37,7 +37,7 @@ if (isset($_POST['reset_pass'])) {
         echo "expredtime";
         $msg = "expiredtime";
         $recov_request->deleteFinishedRequest($tokenSelector);
-        goto redirect;
+        // goto redirect;
     }
 
     $password = $_POST['pass'];
@@ -45,7 +45,7 @@ if (isset($_POST['reset_pass'])) {
 
     // TODO: De lo contrario, verificar si los campos introducidos no estan vacíos y las contraseñas son iguales.
 
-    $emptyFields = $recov_request->emptynput($password, $repeatPassword);
+    $emptyFields = $recov_request->emptyInput($password, $repeatPassword);
     $passwordsAreTheSame = $recov_request->checkPasswords($password, $repeatPassword);
 
     if (!$emptyFields || !$passwordsAreTheSame) {
@@ -53,6 +53,7 @@ if (isset($_POST['reset_pass'])) {
         // echo $previousURL;
         // print_r($params);
         header("Location: ../../change_password.php?selector={$params['selector']}&validator={$params['validator']}&msg=incorrect");
+        exit();
     }
 
     // echo $params['validator'] . "<br>";
