@@ -35,10 +35,6 @@ class ChangePassword extends DBh{
         $stmt = $this->connect()->prepare($sql);
         $result = $stmt->execute([$newPassword, $mail]);
 
-
-        echo $result;
-
-
         if(!$result){
             $stmt = null;
             return false;
