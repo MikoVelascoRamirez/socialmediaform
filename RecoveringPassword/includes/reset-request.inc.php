@@ -18,4 +18,8 @@ if ($_POST['inp_rec_new_pass']) {
         header('Location: ../../reset_password.php?errormsg=couldnotproceed');
         exit();
     }
+
+    // TODO: De lo contrario generar hashes de búsqueda y validación
+    $hashSelector = bin2hex(random_bytes(10));
+    $hashValidator = bin2hex(random_bytes(20));
 }
