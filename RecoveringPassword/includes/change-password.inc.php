@@ -77,6 +77,10 @@ if (isset($_POST['reset_pass'])) {
         goto redirect;
     }
 
+    // TODO: En caso de salir todo bien, eliminar la petición y regresar al inicio
+    $recov_request->deleteFinishedRequest($tokenSelector);
+    $msg = "passwordchanged";
+
     redirect:
     header("Location: ../../index.php?msg={$msg}");
     exit();
