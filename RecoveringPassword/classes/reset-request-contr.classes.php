@@ -17,4 +17,8 @@ class ResetRequestContr extends ResetRequest {
         }
         return true;
     }
+
+    public function addResetRequest($selector, $validator){
+        return $this->insertRequest($this->resetEmail, $selector, $validator, $this->resetExpireDate);
+    }
 }
