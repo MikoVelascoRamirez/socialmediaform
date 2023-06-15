@@ -27,35 +27,16 @@ if (isset($_POST['reset_pass'])) {
         goto redirect;
     }
 
-    // TODO: Si existe, evaluar si el tiempo de expiración obtenido es menor a la actual.
-    $expTime = $result['pwdresetexpires'];
-
-    // TODO: Si el tiempo registrado es menor al actual, eliminar registro y mandar mensaje de tiempo expirado.
-    if ($expTime < time()) {
-        echo "expredtime";
-        $msg = "expiredtime";
-        $recov_request->deleteFinishedRequest($tokenSelector);
-        // goto redirect;
-    }
-
     $password = $_POST['pass'];
     $repeatPassword = $_POST['pass_repeat'];
 
     // TODO: De lo contrario, verificar si los campos introducidos no estan vacíos y las contraseñas son iguales.
 
-    $emptyFields = $recov_request->emptyInput($password, $repeatPassword);
-    $passwordsAreTheSame = $recov_request->checkPasswords($password, $repeatPassword);
-
-    if (!$emptyFields || !$passwordsAreTheSame) {
-        // echo $queryString;
-        // echo $previousURL;
-        // print_r($params);
+    if ($recov_request->checkFields($password, $repeatPassword)) {
         header("Location: ../../change_password.php?selector={$params['selector']}&validator={$params['validator']}&msg=incorrect");
         exit();
     }
 
-    // echo $params['validator'] . "<br>";
-    // echo $result['pwdresetvalidatortoken'] . "<br>";
 
     // TODO: Verificar si los hashes por URL y el de la BD son iguales
 
