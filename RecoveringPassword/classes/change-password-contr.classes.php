@@ -47,6 +47,13 @@ class ChangePasswordContr extends ChangePassword{
         return false;
     }
 
+    public function checkFields($password, $repeatPassword){
+        $emptyFields = $this->emptyInput($password, $repeatPassword);
+        $passwordsAreTheSame = $this->checkPasswords($password, $repeatPassword);
+
+        return !$emptyFields || !$passwordsAreTheSame;
+    }
+
         $object_props = func_get_args();
         foreach($object_props as $key => $value){
             // echo $object_props[$key] . $object_props[$value];
