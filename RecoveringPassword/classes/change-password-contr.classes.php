@@ -24,7 +24,6 @@ class ChangePasswordContr extends ChangePassword{
 
     private function getRecoveryRequest(){
         $result = $this->getRequest($this->tokenSelector);
-        print_r($result);
         if(!$result) {
             return false;
         }
