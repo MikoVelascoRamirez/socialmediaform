@@ -12,13 +12,41 @@ class ChangePasswordContr extends ChangePassword{
         $this->tokenSelector = $selector;
     }
 
+    public function checkAvailability(){
+        if(!$this->getRecoveryRequest()){
+            return "invalidtoken";
+        } else if($this->checkExpiration()){
+            return "expiredtime";
+        }
+
+        return true;
     }
 
-    public function deleteFinishedRequest($tkn_selector){
+    private function getRecoveryRequest(){
+        $result = $this->getRequest($this->tokenSelector);
+        print_r($result);
+        if(!$result) {
+            return false;
+        }
+        $this->email = $result[0]['pwdresetemail'];
+        $this->selectorToken = $result[0]['pwdresetselectortoken'];
+        $this->validatorToken = $result[0]['pwdresetvalidatortoken'];
+        $this->expirationTime = $result[0]['pwdresetexpires'];
+        return true;
+    }
+
         $this->deleteRequest($tkn_selector);
     }
 
-    public function emptyInput($password, $repeatPassword){
+    private function checkExpiration(){
+        if ($this->expirationTime < time()) {
+            $this->deleteFinishedRequest($this->selectorToken);
+            return true;
+        }
+
+        return false;
+    }
+
         $object_props = func_get_args();
         foreach($object_props as $key => $value){
             // echo $object_props[$key] . $object_props[$value];
