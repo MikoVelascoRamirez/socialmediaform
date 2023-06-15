@@ -2,9 +2,16 @@
 
 class ChangePasswordContr extends ChangePassword{
 
-    public function getRecoveryRequest($tkn_selector){
-        return $this->getRequest($tkn_selector)[0];
-        // print_r($this->getRequest($tkn_selector));
+    private $tokenSelector;
+    private $email;
+    private $selectorToken;
+    private $validatorToken;
+    private $expirationTime;
+
+    public function __construct($selector){
+        $this->tokenSelector = $selector;
+    }
+
     }
 
     public function deleteFinishedRequest($tkn_selector){
