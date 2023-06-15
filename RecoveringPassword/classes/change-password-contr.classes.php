@@ -71,8 +71,8 @@ class ChangePasswordContr extends ChangePassword{
         return true;
     }
 
-    public function verifyTokenValidator($tokenValidatorURL, $tokenValidatorDB){
-        return password_verify($tokenValidatorURL, $tokenValidatorDB);
+    public function verifyTokenValidator($tokenValidatorURL){
+        return password_verify($tokenValidatorURL, $this->validatorToken);
     }
 
     public function updatePassword($newPaasword, $emailUser){
