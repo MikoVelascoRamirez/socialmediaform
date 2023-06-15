@@ -40,7 +40,7 @@ if (isset($_POST['reset_pass'])) {
 
     // TODO: Verificar si los hashes por URL y el de la BD son iguales
 
-    $hashesAreEqual = $recov_request->verifyTokenValidator($params['validator'], $result['pwdresetvalidatortoken']);
+    $hashesAreEqual = $recov_request->verifyTokenValidator($params['validator']);
 
     // TODO: Caso negativo: redireccionar al formulario de cambio de contraseña.
     if (!$hashesAreEqual) {
