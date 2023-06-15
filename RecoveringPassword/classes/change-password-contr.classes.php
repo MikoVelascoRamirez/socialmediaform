@@ -35,6 +35,7 @@ class ChangePasswordContr extends ChangePassword{
         return true;
     }
 
+    private function deleteFinishedRequest($tkn_selector){
         $this->deleteRequest($tkn_selector);
     }
 
@@ -54,6 +55,7 @@ class ChangePasswordContr extends ChangePassword{
         return !$emptyFields || !$passwordsAreTheSame;
     }
 
+    private function emptyInput($password, $repeatPassword){
         $object_props = func_get_args();
         foreach($object_props as $key => $value){
             // echo $object_props[$key] . $object_props[$value];
@@ -64,7 +66,7 @@ class ChangePasswordContr extends ChangePassword{
         return true;
     }
 
-    public function checkPasswords($password, $repeatPassword){
+    private function checkPasswords($password, $repeatPassword){
         if($password !== $repeatPassword){
             return false;
         }
