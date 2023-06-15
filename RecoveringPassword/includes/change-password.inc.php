@@ -50,16 +50,14 @@ if (isset($_POST['reset_pass'])) {
 
     // TODO: Caso positivo: tomar la contraseña introducida, y cambiarla.
     $newPassword = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-    $updatePassword = $recov_request->updatePassword($newPassword, $result['pwdresetemail']);
+    $updatePassword = $recov_request->updatePassword($newPassword);
 
     if (!$updatePassword) {
         $msg = "somethingwaswrong";
         goto redirect;
     }
 
-    // TODO: En caso de salir todo bien, eliminar la petición y regresar al inicio
-    $recov_request->deleteFinishedRequest($tokenSelector);
-    $msg = "passwordchanged";
+    $msg = "passwordchangedsuccesffully";
 
     redirect:
     header("Location: ../../index.php?msg={$msg}");
