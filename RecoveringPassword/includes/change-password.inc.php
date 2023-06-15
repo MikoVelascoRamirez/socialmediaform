@@ -5,7 +5,6 @@ if (isset($_POST['reset_pass'])) {
 
     // TODO: Obtener el token de selector
     $tokenSelector = $_POST['token_selector'];
-    // echo $tokenSelector;
 
     // TODO: Obtener parámetros URL.
     $previousURL = $_SERVER['HTTP_REFERER'];
@@ -17,16 +16,15 @@ if (isset($_POST['reset_pass'])) {
     include_once('../classes/change-password.classes.php');
     include_once('../classes/change-password-contr.classes.php');
 
-    $recov_request = new ChangePasswordContr();
+    $recov_request = new ChangePasswordContr($tokenSelector);
 
     // TODO: Seleccionar todo el registro si el token de selector existe en la bd
-    $result = $recov_request->getRecoveryRequest($tokenSelector);
+    $result = $recov_request->checkAvailability();
     $msg = "";
-    // $recov_request->getRecoveryRequest($tokenSelector);
-
-    if (!$result) {
-        $msg = "invalidtoken";
-        // goto redirect;
+    
+    if (gettype($result) === "string") {
+        $msg = $result;
+        goto redirect;
     }
 
     // TODO: Si existe, evaluar si el tiempo de expiración obtenido es menor a la actual.
